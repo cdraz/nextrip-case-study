@@ -1,22 +1,23 @@
 // Redux and Redux-Saga imports for store setup
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import logger from 'redux-logger';
 
 // Import reducer and saga
-import busReducer from './busRoute/busRoute.reducer';
-import busSaga from './busRoute/busRoute.saga';
+import rootReducer from './root.reducer';
+import rootSaga from './root.saga';
 
 // Create saga middleware
 const middleware = createSagaMiddleware();
-const middlewareList = [middleware];
+const middlewareList = [middleware, logger];
 
 // Create redux store
 const store = createStore(
-    busReducer,
+    rootReducer,
     applyMiddleware(...middlewareList)
 );
 
 // Let Redux-Saga know which saga to use
-middleware.run(busSaga);
+middleware.run(rootSaga);
 
 export default store;

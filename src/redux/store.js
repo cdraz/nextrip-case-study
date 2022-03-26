@@ -3,8 +3,8 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 // Import reducer and saga
-import busReducer from './bus.reducer';
-import busSaga from './bus.saga';
+import busReducer from './busRoute/busRoute.reducer';
+import busSaga from './busRoute/busRoute.saga';
 
 // Create saga middleware
 const middleware = createSagaMiddleware();

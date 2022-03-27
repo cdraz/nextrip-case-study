@@ -8,13 +8,13 @@ import RouteSelect from '../RouteSelect/RouteSelect';
 function App() {
 
   // Redux store access
-  const store = useSelector( store => store );
+  const routes = useSelector(store => store.nextTripOptions.routes);
 
   // Dispatch hook
   const dispatch = useDispatch();
 
   // On App load, get route options from NextTrip API
-  useEffect( () => {
+  useEffect(() => {
     dispatch({ type: 'FETCH_ROUTES' });
   }, []);
 
@@ -23,7 +23,9 @@ function App() {
       <header>
         <h1>Target Case Study</h1>
       </header>
-      <RouteSelect />
+      {routes &&
+        <RouteSelect routes={routes} />
+      }
     </div>
   );
 }

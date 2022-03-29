@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -23,7 +22,6 @@ function RouteSelect() {
     const routes = useSelector(store => store.nextTripOptions.routes);
     const selectedBus = useSelector(store => store.busRoute);
     
-    
     // Handle change in route select, on change dispatch to redux and set selected route
     const handleChange = event => {
         console.log(event.target.value);
@@ -33,11 +31,13 @@ function RouteSelect() {
         });
     }
 
+    // If routes isn't set in redux state yet (still awaiting API response), show loading bar
     if (!routes) {
         return (
             <LinearProgress />
         )
     }
+
     return (
         <>
             <TextField

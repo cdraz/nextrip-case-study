@@ -4,8 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Import React Components
 import RouteSelect from '../RouteSelect/RouteSelect';
+import DirectionSelect from '../DirectionSelect/DirectionSelect';
 
 function App() {
+
+  // Store access
+  const selectedBus = useSelector(store => store.busRoute);
 
   return (
     <div>
@@ -13,6 +17,7 @@ function App() {
         <h1>Target Case Study</h1>
       </header>
         <RouteSelect />
+        { selectedBus.route && <DirectionSelect />}
     </div>
   );
 }

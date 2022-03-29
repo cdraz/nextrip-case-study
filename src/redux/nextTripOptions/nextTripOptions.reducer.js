@@ -9,6 +9,11 @@ const nextTripOptionsReducer = ( state = {}, action ) => {
                 ...state,
                 directions: action.payload
             }
+        case 'SET_STOP_OPTIONS':
+            return {
+                ...state,
+                stops: action.payload
+            }
         default:
             return state;
     }

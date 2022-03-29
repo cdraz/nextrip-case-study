@@ -24,7 +24,6 @@ function RouteSelect() {
     
     // Handle change in route select, on change dispatch to redux and set selected route
     const handleChange = event => {
-        console.log(event.target.value);
         dispatch({
             type: 'SET_SELECTED_ROUTE',
             payload: event.target.value

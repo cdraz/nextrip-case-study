@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // Import React Components
 import RouteSelect from '../RouteSelect/RouteSelect';
 import DirectionSelect from '../DirectionSelect/DirectionSelect';
+import StopSelect from '../StopSelect/StopSelect';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       </header>
         <RouteSelect />
         { selectedBus.route && <DirectionSelect />}
+        { selectedBus.direction && <StopSelect />}
     </div>
   );
 }

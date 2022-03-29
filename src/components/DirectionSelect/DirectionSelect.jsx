@@ -22,7 +22,6 @@ function DirectionSelect() {
 
     // Handle change in direction select, on change dispatch to redux and set selected direction
     const handleChange = event => {
-        console.log(event.target.value);
         dispatch({
             type: 'SET_SELECTED_DIRECTION',
             payload: event.target.value

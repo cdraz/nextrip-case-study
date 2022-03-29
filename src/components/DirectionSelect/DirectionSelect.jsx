@@ -2,9 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 // MUI Imports
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import LinearProgress from '@mui/material/LinearProgress';
 
@@ -12,14 +10,24 @@ function DirectionSelect() {
 
     // Store access
     const directions = useSelector(store => store.nextTripOptions.directions);
+    const selectedBus = useSelector(store => store.busRoute);
 
     // Dispatch hook
     const dispatch = useDispatch();
 
-    // On component load, get direction options for selected route from NextTrip API
+    // On component load and whenever selectedBus.route changes, get direction options for selected route from NextTrip API
     useEffect(() => {
-        dispatch({ type: 'FETCH_DIRECTIONS' });
-    }, []);
+        dispatch({ type: 'FETCH_DIRECTIONS', payload: selectedBus.route });
+    }, [selectedBus]);
+
+    // Handle change in direction select, on change dispatch to redux and set selected direction
+    const handleChange = event => {
+        console.log(event.target.value);
+        dispatch({
+            type: 'SET_SELECTED_DIRECTION',
+            payload: event.target.value
+        });
+    }
 
     // If no directions (redux state still awaiting directions from API), show loading bar
     if (!directions) {
@@ -29,7 +37,18 @@ function DirectionSelect() {
     }
 
     return (
-        <></>
+        <TextField
+            select
+            label="Select a Direction"
+            value={selectedBus.direction}
+            onChange={handleChange}
+        >
+            {directions.map(direction => (
+                <MenuItem key={direction.Text} value={direction.Value}>
+                    {direction.Text}
+                </MenuItem>
+            ))}
+        </TextField>
     )
 }
 

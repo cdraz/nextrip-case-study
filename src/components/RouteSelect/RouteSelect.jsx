@@ -39,7 +39,6 @@ function RouteSelect() {
     }
 
     return (
-        <>
             <TextField
                 select
                 label="Select a Route"
@@ -52,7 +51,6 @@ function RouteSelect() {
                     </MenuItem>
                 ))}
             </TextField>
-        </>
     )
 }
 

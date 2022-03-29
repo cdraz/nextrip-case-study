@@ -4,6 +4,11 @@ const nextTripOptionsReducer = ( state = {}, action ) => {
             return {
                 routes: action.payload
             };
+        case 'SET_DIRECTION_OPTIONS':
+            return {
+                ...state,
+                directions: action.payload
+            }
         default:
             return state;
     }

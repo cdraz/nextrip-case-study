@@ -22,4 +22,7 @@ function* nextTripOptionsSaga() {
     yield takeLatest('FETCH_ROUTES', fetchRoutes);
 };
 
-export default nextTripOptionsSaga;
+export {
+    nextTripOptionsSaga,
+    fetchRoutes
+};

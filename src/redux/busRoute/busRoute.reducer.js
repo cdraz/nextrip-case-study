@@ -7,7 +7,8 @@ const busReducer = ( state = { route: '', direction: '', stops: [] }, action ) =
         case 'SET_SELECTED_DIRECTION':
             return {
                 route: state.route,
-                direction: action.payload
+                direction: action.payload,
+                stops: []
             }
         default:
             return state;

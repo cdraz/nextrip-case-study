@@ -11,5 +11,13 @@ describe('busRouteReducer', () => {
             payload: 'Test Route'
         }
         expect(busRouteReducer({}, setRouteAction)).toEqual({ route: 'Test Route', direction: '', stops: [] });
-    })
+    });
+
+    test('Should handle SET_SELECTED_DIRECTION requests and return selected route and selected direction with no selected stops', () => {
+        const setDirectionAction = {
+            type: 'SET_SELECTED_DIRECTION',
+            payload: 'Test Direction'
+        }
+        expect(busRouteReducer({ route: 'Test Route', direction: '', stops: [] }, setDirectionAction)).toEqual({ route: 'Test Route', direction: 'Test Direction', stops: [] });
+    });
 })

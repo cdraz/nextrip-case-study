@@ -42,5 +42,6 @@ function* nextTripOptionsSaga() {
 
 export {
     nextTripOptionsSaga,
-    fetchRoutes
+    fetchRoutes,
+    fetchDirections
 };

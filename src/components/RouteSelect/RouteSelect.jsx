@@ -1,21 +1,29 @@
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 // MUI Imports
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 import LinearProgress from '@mui/material/LinearProgress';
 
-function RouteSelect({ routes }) {
+function RouteSelect() {
 
     // Dispatch hook
     const dispatch = useDispatch();
 
-    // Redux store access for selected busRoute
-    const selectedBus = useSelector(store => store.busRoute);
+    // On App load, get route options from NextTrip API
+    useEffect(() => {
+        dispatch({ type: 'FETCH_ROUTES' });
+    }, []);
 
+    // Redux store access
+    const routes = useSelector(store => store.nextTripOptions.routes);
+    const selectedBus = useSelector(store => store.busRoute);
+    
+    
     // Handle change in route select, on change dispatch to redux and set selected route
     const handleChange = event => {
         console.log(event.target.value);
@@ -25,27 +33,25 @@ function RouteSelect({ routes }) {
         });
     }
 
+    if (!routes) {
+        return (
+            <LinearProgress />
+        )
+    }
     return (
         <>
-            {
-                Array.isArray(routes) ?
-                    <>
-                        <InputLabel id="routes-label">Select a Route</InputLabel>
-                        <Select
-                            labelId="routes-label"
-                            value={selectedBus.route}
-                            onChange={handleChange}
-                        >
-                            {routes.map(route => (
-                                <MenuItem key={route.Route} value={route.Route}>
-                                    {route.Description}
-                                </MenuItem>
-                            ))
-                            }
-                        </Select>
-                    </>
-                    : <LinearProgress />
-            }
+            <TextField
+                select
+                label="Select a Route"
+                value={selectedBus.route}
+                onChange={handleChange}
+            >
+                {routes.map(route => (
+                    <MenuItem key={route.Route} value={route.Route}>
+                        {route.Description}
+                    </MenuItem>
+                ))}
+            </TextField>
         </>
     )
 }

@@ -38,7 +38,7 @@ function StopSelect() {
     return (
         <TextField
             select
-            label="Select a Stop"
+            label="Select stop"
             value={selectedBus.stop}
             onChange={handleChange}
         >

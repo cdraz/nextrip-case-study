@@ -40,7 +40,7 @@ function RouteSelect() {
     return (
             <TextField
                 select
-                label="Select a Route"
+                label="Select route"
                 value={selectedBus.route}
                 onChange={handleChange}
             >

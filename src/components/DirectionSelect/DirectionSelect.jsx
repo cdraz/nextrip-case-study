@@ -38,7 +38,7 @@ function DirectionSelect() {
     return (
         <TextField
             select
-            label="Select a Direction"
+            label="Select direction"
             value={selectedBus.direction}
             onChange={handleChange}
         >

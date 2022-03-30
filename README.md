@@ -21,7 +21,7 @@ Here are the assumptions I made when developing this application:
     - Must be delivered by 11 AM CDT on 3/30/22
 - Methodology: develop one complete feature at a time, testing as features are completed when possible
 - Technology:
-    - Technologies to be used: Node, React, Redux, Redux-Saga, Jest
+    - Technologies to be used: Node, React, Redux, Redux-Saga, Material-UI, Jest
     - No backend will be built, all data will be coming from HTTP requests to the NexTrip API
         - All GET HTTP requests will return JSON
         - No storage of data outside of browser memory

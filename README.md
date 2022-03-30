@@ -43,6 +43,9 @@ Fork and clone this repository. Once cloned and downloaded locally, run "npm ins
 To build and run:
 Run "npm start" in the terminal while in the root of this project, then navigate to localhost:3000/ to view.
 
+Alternatively, view a deployed version at https://vast-tor-41082.herokuapp.com/
+(May take a few seconds to wake up dyno and start app)
+
 To test:
 Run "npm test" in the terminal while in the root of this project.
 

@@ -5,5 +5,6 @@ describe.skip("DirectionSelect", () => {
         // TODO: Render DirectionSelect and make sure it mounts
         // TODO: Test that dispatch gets called once with "FETCH_DIRECTIONS" on load (from useEffect)
         // TODO: Simulate click event on direction select and make sure menu items render
+        // TODO: Simulate click event on menu item and make sure handle change gets called and dispatches once
     });
 });
